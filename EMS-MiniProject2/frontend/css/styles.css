@@ -1,0 +1,752 @@
+/* ============================================================
+   styles.css
+   Purpose : Custom styling that supplements Bootstrap 5.
+             Covers card hover effects, status/department
+             badge colours, layout spacing adjustments,
+             dashboard CSS-only bar chart bars, and
+             brand-specific colour overrides.
+   Rules   : Supplements Bootstrap — does not replace it.
+============================================================ */
+
+
+/* ============================================================
+   BRAND COLOUR OVERRIDES
+   Primary brand colours for the application
+============================================================ */
+
+:root {
+    --brand-primary:     #0d6efd;
+    --brand-dark:        #0a58ca;
+    --brand-light:       #e8f0fe;
+    --brand-success:     #198754;
+    --brand-danger:      #dc3545;
+    --brand-warning:     #ffc107;
+    --brand-secondary:   #6c757d;
+    --brand-white:       #ffffff;
+    --brand-bg:          #f4f6f9;
+    --brand-text-dark:   #212529;
+    --brand-text-muted:  #6c757d;
+    --brand-border:      #dee2e6;
+    --brand-navbar-bg:   #1a1f2e;
+    --brand-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --brand-card-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ============================================================
+   LAYOUT SPACING ADJUSTMENTS
+============================================================ */
+
+body {
+    background-color: var(--brand-bg);
+    color: var(--brand-text-dark);
+}
+
+/* Offset content below fixed navbar */
+.main-content {
+    padding-top: 70px;
+}
+
+/* View section padding */
+.view-section {
+    padding: 30px 15px;
+}
+
+/* Auth wrapper — centers login and signup cards */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--brand-bg);
+}
+
+/* Page header spacing */
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-title {
+    font-weight: 600;
+    color: var(--brand-text-dark);
+    margin-bottom: 4px;
+}
+
+.page-subtitle {
+    color: var(--brand-text-muted);
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+/* Controls bar spacing */
+.controls-bar {
+    background-color: var(--brand-white);
+    border: 1px solid var(--brand-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.controls-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--brand-text-muted);
+    margin-bottom: 6px;
+}
+
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+
+#main-navbar {
+    background-color: var(--brand-navbar-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+}
+
+#main-navbar .navbar-brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    color: var(--brand-white);
+}
+
+#main-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#main-navbar .nav-link:hover,
+#main-navbar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--brand-white);
+}
+
+.btn-add-employee {
+    background-color: var(--brand-primary);
+    color: var(--brand-white);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-add-employee:hover {
+    background-color: var(--brand-dark);
+    color: var(--brand-white);
+}
+
+.btn-logout {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: var(--brand-danger);
+    color: var(--brand-white);
+    border-color: var(--brand-danger);
+}
+
+
+/* ============================================================
+   AUTH PAGES — Login and Signup
+============================================================ */
+
+.auth-card {
+    background-color: var(--brand-white);
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: var(--brand-card-shadow);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-logo-icon {
+    font-size: 2.5rem;
+    color: var(--brand-primary);
+    display: block;
+    margin-bottom: 12px;
+}
+
+.auth-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brand-text-dark);
+    margin-bottom: 4px;
+}
+
+.auth-subtitle {
+    color: var(--brand-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.btn-auth-submit {
+    background-color: var(--brand-primary);
+    color: var(--brand-white);
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+}
+
+.btn-auth-submit:hover {
+    background-color: var(--brand-dark);
+    color: var(--brand-white);
+}
+
+.auth-switch-text {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: var(--brand-text-muted);
+}
+
+.auth-switch-text a {
+    color: var(--brand-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-switch-text a:hover {
+    text-decoration: underline;
+}
+
+/* Auth field error messages */
+.auth-field-error {
+    display: none;
+    color: var(--brand-danger);
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+
+/* ============================================================
+   KPI SUMMARY CARDS
+   Card hover effects as required by document
+============================================================ */
+
+.kpi-card {
+    background-color: var(--brand-white);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--brand-card-shadow);
+    border-left: 4px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+/* Card hover effect */
+.kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--brand-card-hover-shadow);
+}
+
+.kpi-icon {
+    font-size: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.kpi-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.kpi-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--brand-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+}
+
+.kpi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--brand-text-dark);
+}
+
+/* Individual KPI card colour variants */
+.kpi-total {
+    border-left-color: var(--brand-primary);
+}
+.kpi-total .kpi-icon {
+    background-color: var(--brand-light);
+    color: var(--brand-primary);
+}
+
+.kpi-active {
+    border-left-color: var(--brand-success);
+}
+.kpi-active .kpi-icon {
+    background-color: #d1e7dd;
+    color: var(--brand-success);
+}
+
+.kpi-inactive {
+    border-left-color: var(--brand-danger);
+}
+.kpi-inactive .kpi-icon {
+    background-color: #f8d7da;
+    color: var(--brand-danger);
+}
+
+.kpi-departments {
+    border-left-color: var(--brand-warning);
+}
+.kpi-departments .kpi-icon {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+
+/* ============================================================
+   DASHBOARD PANELS
+============================================================ */
+
+.dashboard-panel {
+    background-color: var(--brand-white);
+    border-radius: 10px;
+    box-shadow: var(--brand-card-shadow);
+    overflow: hidden;
+    height: 100%;
+    transition: box-shadow 0.2s ease;
+}
+
+.dashboard-panel:hover {
+    box-shadow: var(--brand-card-hover-shadow);
+}
+
+.panel-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--brand-border);
+    background-color: #fafbfc;
+}
+
+.panel-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--brand-text-dark);
+    margin-bottom: 0;
+}
+
+.panel-body {
+    padding: 16px 20px;
+}
+
+
+/* ============================================================
+   DEPARTMENT BREAKDOWN TABLE
+============================================================ */
+
+.dept-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--brand-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--brand-border);
+}
+
+.dept-table td {
+    vertical-align: middle;
+    padding: 10px 8px;
+    font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   DASHBOARD CSS-ONLY BAR CHART
+   As required by document — no external chart library
+============================================================ */
+
+.dept-bar-wrapper {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    height: 10px;
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    min-width: 80px;
+}
+
+.dept-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+.dept-bar-label {
+    font-size: 0.8rem;
+    color: var(--brand-text-muted);
+    vertical-align: middle;
+}
+
+/* Department bar colours matching badge colours */
+.dept-bar.dept-engineering  { background-color: #0d6efd; }
+.dept-bar.dept-marketing    { background-color: #fd7e14; }
+.dept-bar.dept-hr           { background-color: #6f42c1; }
+.dept-bar.dept-finance      { background-color: #198754; }
+.dept-bar.dept-operations   { background-color: #0dcaf0; }
+
+
+/* ============================================================
+   STATUS BADGE COLOURS
+   As required by document
+============================================================ */
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.badge-status-active {
+    background-color: #d1e7dd;
+    color: #0a3622;
+}
+
+.badge-status-inactive {
+    background-color: #f8d7da;
+    color: #58151c;
+}
+
+
+/* ============================================================
+   DEPARTMENT BADGE COLOURS
+   One colour per department as required by document
+============================================================ */
+
+.dept-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.dept-engineering {
+    background-color: #cfe2ff;
+    color: #084298;
+}
+
+.dept-marketing {
+    background-color: #ffe5d0;
+    color: #7c3600;
+}
+
+.dept-hr {
+    background-color: #e8d5f5;
+    color: #3d1060;
+}
+
+.dept-finance {
+    background-color: #d1e7dd;
+    color: #0a3622;
+}
+
+.dept-operations {
+    background-color: #cff4fc;
+    color: #055160;
+}
+
+.dept-default {
+    background-color: #e2e3e5;
+    color: #41464b;
+}
+
+
+/* ============================================================
+   RECENT EMPLOYEES PANEL
+============================================================ */
+
+.recent-employee-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--brand-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.recent-employee-item:last-child {
+    border-bottom: none;
+}
+
+.recent-employee-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.recent-employee-id {
+    font-size: 0.78rem;
+    color: var(--brand-text-muted);
+    font-weight: 600;
+}
+
+.recent-employee-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brand-text-dark);
+}
+
+.recent-employee-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.recent-employee-designation {
+    font-size: 0.8rem;
+    color: var(--brand-text-muted);
+}
+
+
+/* ============================================================
+   EMPLOYEE TABLE
+============================================================ */
+
+.employee-table {
+    background-color: var(--brand-white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--brand-card-shadow);
+    font-size: 0.88rem;
+}
+
+.employee-table thead tr {
+    background-color: #f8f9fa;
+}
+
+.employee-table thead th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--brand-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 14px 12px;
+    border-bottom: 2px solid var(--brand-border);
+    white-space: nowrap;
+}
+
+.employee-table tbody td {
+    padding: 12px;
+    vertical-align: middle;
+    border-color: #f0f0f0;
+}
+
+/* Alternate row shading as required by document */
+.row-even {
+    background-color: var(--brand-white);
+}
+
+.row-odd {
+    background-color: #f8fafc;
+}
+
+.employee-table tbody tr:hover {
+    background-color: var(--brand-light);
+}
+
+
+/* ============================================================
+   TABLE ACTION BUTTONS
+============================================================ */
+
+.btn-view {
+    background-color: #e8f4fd;
+    color: #0a6ebd;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-view:hover {
+    background-color: #0d6efd;
+    color: var(--brand-white);
+}
+
+.btn-edit {
+    background-color: #fff3cd;
+    color: #856404;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: var(--brand-warning);
+    color: var(--brand-text-dark);
+}
+
+.btn-delete {
+    background-color: #f8d7da;
+    color: #842029;
+    border: none;
+    border-radius: 5px;
+    padding: 4px 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: var(--brand-danger);
+    color: var(--brand-white);
+}
+
+
+/* ============================================================
+   FIELD ERROR MESSAGES — Employee Form
+============================================================ */
+
+.field-error {
+    display: none;
+    color: var(--brand-danger);
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+
+/* ============================================================
+   VIEW EMPLOYEE MODAL — Two Column Layout
+============================================================ */
+
+.view-modal-body .view-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--brand-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+}
+
+.view-modal-body .view-value {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--brand-text-dark);
+}
+
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+============================================================ */
+
+@media (max-width: 767px) {
+    .auth-card {
+        padding: 28px 20px;
+    }
+
+    .kpi-value {
+        font-size: 1.6rem;
+    }
+
+    .view-section {
+        padding: 20px 10px;
+    }
+
+    .controls-bar {
+        padding: 14px;
+    }
+
+    .employee-table thead th,
+    .employee-table tbody td {
+        padding: 10px 8px;
+        font-size: 0.82rem;
+    }
+}
+
+/* ============================================================
+   PAGINATION
+============================================================ */
+
+.pagination-label {
+    font-size: 0.85rem;
+    color: var(--brand-text-muted);
+}
+
+.pagination .page-link {
+    color: var(--brand-primary);
+    border-color: var(--brand-border);
+    font-size: 0.85rem;
+    padding: 6px 12px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+    color: var(--brand-white);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: var(--brand-text-muted);
+    pointer-events: none;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--brand-light);
+    color: var(--brand-dark);
+}
+
+/* ============================================================
+   ROLE BADGE IN NAVBAR
+============================================================ */
+
+#navbar-role-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+}
+
+/* ============================================================
+   VIEWER NOTICE
+============================================================ */
+
+#viewer-notice {
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
