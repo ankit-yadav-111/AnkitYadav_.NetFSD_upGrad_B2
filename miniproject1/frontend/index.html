@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management System</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- ======================================================
+         NAVBAR
+         Fixed-top Bootstrap Navbar
+         Shown only when logged in (toggled via jQuery)
+    ====================================================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-navbar">
+        <div class="container-fluid">
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-people-fill me-2"></i>EMS
+            </a>
+
+            <!-- Hamburger Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent" aria-controls="navbarContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+
+                <!-- Left Nav Links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="nav-dashboard">
+                            <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="nav-employees">
+                            <i class="bi bi-people me-1"></i>Employees
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Right Nav Actions -->
+                <div class="d-flex align-items-center gap-2">
+
+                     <span class="badge rounded-pill bg-info text-dark ms-2" id="navbar-role-badge"></span>
+                    <button class="btn btn-add-employee" id="nav-add-employee">
+                        <i class="bi bi-plus-circle me-1"></i>Add Employee
+                    </button>
+                    <button class="btn btn-logout" id="logout-btn">
+                        <i class="bi bi-box-arrow-right me-1"></i>Logout
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======================================================
+         MAIN CONTENT WRAPPER
+    ====================================================== -->
+    <div class="main-content" id="main-content">
+
+        <!-- ==================================================
+             LOGIN VIEW
+        ================================================== -->
+        <div id="login-view" class="auth-wrapper">
+            <div class="auth-card">
+
+                <div class="auth-header">
+                    <i class="bi bi-people-fill auth-logo-icon"></i>
+                    <h2 class="auth-title">Employee Management System</h2>
+                    <p class="auth-subtitle">Sign in to your admin account</p>
+                </div>
+
+                <form id="login-form" novalidate>
+
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label for="auth-login-username" class="form-label">Username</label>
+                        <input type="text" class="form-control auth-form-control"
+                            id="auth-login-username" placeholder="Enter username" />
+                        <span class="auth-field-error" id="auth-error-username"></span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="auth-login-password" class="form-label">Password</label>
+                        <input type="password" class="form-control auth-form-control"
+                            id="auth-login-password" placeholder="Enter password" />
+                        <span class="auth-field-error" id="auth-error-password"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-auth-submit w-100">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                    </button>
+
+                </form>
+
+                <p class="auth-switch-text">
+                    Don't have an account?
+                    <a href="#" id="go-to-signup">Sign Up</a>
+                </p>
+
+            </div>
+        </div>
+
+        <!-- ==================================================
+             SIGNUP VIEW
+        ================================================== -->
+        <div id="signup-view" class="auth-wrapper">
+            <div class="auth-card">
+
+                <div class="auth-header">
+                    <i class="bi bi-person-plus-fill auth-logo-icon"></i>
+                    <h2 class="auth-title">Create Admin Account</h2>
+                    <p class="auth-subtitle">Register to manage your workforce</p>
+                </div>
+
+                <form id="signup-form" novalidate>
+
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label for="auth-signup-username" class="form-label">Username</label>
+                        <input type="text" class="form-control auth-form-control"
+                            id="auth-signup-username" placeholder="Choose a username" />
+                        <span class="auth-field-error" id="auth-error-username"></span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label for="auth-signup-password" class="form-label">Password</label>
+                        <input type="password" class="form-control auth-form-control"
+                            id="auth-signup-password" placeholder="Minimum 6 characters" />
+                        <span class="auth-field-error" id="auth-error-password"></span>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-3">
+                        <label for="auth-signup-confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control auth-form-control"
+                            id="auth-signup-confirmPassword" placeholder="Re-enter password" />
+                        <span class="auth-field-error" id="auth-error-confirmPassword"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-auth-submit w-100">
+                        <i class="bi bi-person-check me-2"></i>Sign Up
+                    </button>
+
+                </form>
+
+                <p class="auth-switch-text">
+                    Already have an account?
+                    <a href="#" id="go-to-login">Login</a>
+                </p>
+
+            </div>
+        </div>
+
+        <!-- ==================================================
+             DASHBOARD VIEW
+        ================================================== -->
+        <div id="dashboard-view" class="view-section">
+            <div class="container-fluid">
+
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h3 class="page-title">
+                        <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                    </h3>
+                    <p class="page-subtitle">Workforce overview and insights</p>
+                </div>
+
+                <!-- KPI Summary Cards -->
+                <div class="row g-4 mb-4">
+
+                    <!-- Total Employees -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="kpi-card kpi-total">
+                            <div class="kpi-icon">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <div class="kpi-info">
+                                <span class="kpi-label">Total Employees</span>
+                                <span class="kpi-value" id="card-total-employees">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Employees -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="kpi-card kpi-active">
+                            <div class="kpi-icon">
+                                <i class="bi bi-person-check-fill"></i>
+                            </div>
+                            <div class="kpi-info">
+                                <span class="kpi-label">Active Employees</span>
+                                <span class="kpi-value" id="card-active-employees">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inactive Employees -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="kpi-card kpi-inactive">
+                            <div class="kpi-icon">
+                                <i class="bi bi-person-dash-fill"></i>
+                            </div>
+                            <div class="kpi-info">
+                                <span class="kpi-label">Inactive Employees</span>
+                                <span class="kpi-value" id="card-inactive-employees">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Departments -->
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="kpi-card kpi-departments">
+                            <div class="kpi-icon">
+                                <i class="bi bi-diagram-3-fill"></i>
+                            </div>
+                            <div class="kpi-info">
+                                <span class="kpi-label">Total Departments</span>
+                                <span class="kpi-value" id="card-total-departments">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Department Breakdown + Recent Employees -->
+                <div class="row g-4">
+
+                    <!-- Department Breakdown -->
+                    <div class="col-12 col-lg-6">
+                        <div class="dashboard-panel">
+                            <div class="panel-header">
+                                <h5 class="panel-title">
+                                    <i class="bi bi-bar-chart-fill me-2"></i>Department Breakdown
+                                </h5>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-borderless dept-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Department</th>
+                                            <th>Count</th>
+                                            <th>Distribution</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="department-breakdown-body">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Employees -->
+                    <div class="col-12 col-lg-6">
+                        <div class="dashboard-panel">
+                            <div class="panel-header">
+                                <h5 class="panel-title">
+                                    <i class="bi bi-clock-history me-2"></i>Recent Employees
+                                </h5>
+                            </div>
+                            <div class="panel-body">
+                                <div id="recent-employees-list"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==================================================
+             EMPLOYEE LIST VIEW
+        ================================================== -->
+        <div id="employee-view" class="view-section">
+            <div class="container-fluid">
+
+                <!-- Page Header -->
+                <div class="page-header">
+                    <h3 class="page-title">
+                        <i class="bi bi-people me-2"></i>Employees
+                    </h3>
+                    <p class="page-subtitle">Manage your workforce records</p>
+                </div>
+
+                <div id="viewer-notice" class="alert alert-info d-none mb-3">
+    <i class="bi bi-eye me-2"></i>
+    You have read-only access. Contact an Admin to make changes.
+</div>
+
+                <!-- Search, Filter and Sort Controls -->
+                <div class="controls-bar">
+
+                    <div class="row g-3 align-items-end">
+
+                        <!-- Search -->
+                        <div class="col-12 col-md-4">
+                            <label class="form-label controls-label">Search</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-search"></i>
+                                </span>
+                                <input type="text" class="form-control"
+                                    id="search-input"
+                                    placeholder="Search by name or email..." />
+                            </div>
+                        </div>
+
+                        <!-- Department Filter -->
+                        <div class="col-12 col-md-3">
+                            <label class="form-label controls-label">Department</label>
+                            <select class="form-select" id="filter-department">
+                                <option value="All">All Departments</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="HR">HR</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Operations">Operations</option>
+                            </select>
+                        </div>
+
+                        <!-- Sort -->
+                        <div class="col-12 col-md-3">
+                            <label class="form-label controls-label">Sort By</label>
+                            <select class="form-select" id="sort-select">
+                                <option value="">Default</option>
+                                <option value="name-asc">Name A–Z</option>
+                                <option value="name-desc">Name Z–A</option>
+                                <option value="salary-asc">Salary Low to High</option>
+                                <option value="salary-desc">Salary High to Low</option>
+                                <option value="joinDate-desc">Join Date Newest First</option>
+                                <option value="joinDate-asc">Join Date Oldest First</option>
+                            </select>
+                        </div>
+
+                        <!-- Status Filter -->
+                        <div class="col-12 col-md-2">
+                            <label class="form-label controls-label">Status</label>
+                            <div class="btn-group w-100" role="group">
+                                <input type="radio" class="btn-check" name="filter-status"
+                                    id="status-all" value="All" checked />
+                                <label class="btn btn-outline-secondary btn-sm" for="status-all">All</label>
+
+                                <input type="radio" class="btn-check" name="filter-status"
+                                    id="status-active" value="Active" />
+                                <label class="btn btn-outline-success btn-sm" for="status-active">Active</label>
+
+                                <input type="radio" class="btn-check" name="filter-status"
+                                    id="status-inactive" value="Inactive" />
+                                <label class="btn btn-outline-danger btn-sm" for="status-inactive">Inactive</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Employee Table -->
+                <div class="table-responsive">
+                    <table class="table employee-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Designation</th>
+                                <th>Salary</th>
+                                <th>Join Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employee-table-body">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="pagination-container"></div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- end main-content -->
+
+    <!-- ======================================================
+         MODAL : Add / Edit Employee
+    ====================================================== -->
+    <div class="modal fade" id="employeeModal" tabindex="-1"
+        aria-labelledby="employee-modal-title" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="employee-modal-title">Add Employee</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="employee-form" novalidate>
+
+                        <!-- Hidden ID field for edit -->
+                        <input type="hidden" id="employee-modal-id" />
+
+                        <div class="row g-3">
+
+                            <!-- First Name -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-firstName" class="form-label">First Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="emp-firstName"
+                                    placeholder="Enter first name" />
+                                <span class="field-error" id="error-firstName"></span>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="emp-lastName"
+                                    placeholder="Enter last name" />
+                                <span class="field-error" id="error-lastName"></span>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-email" class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="emp-email"
+                                    placeholder="e.g. name@XYZ.com" />
+                                <span class="field-error" id="error-email"></span>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-phone" class="form-label">Phone <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="emp-phone"
+                                    placeholder="10-digit number" maxlength="10" />
+                                <span class="field-error" id="error-phone"></span>
+                            </div>
+
+                            <!-- Department -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-department" class="form-label">Department <span class="text-danger">*</span></label>
+                                <select class="form-select" id="emp-department">
+                                    <option value="">Select Department</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="HR">HR</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Operations">Operations</option>
+                                </select>
+                                <span class="field-error" id="error-department"></span>
+                            </div>
+
+                            <!-- Designation -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-designation" class="form-label">Designation <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="emp-designation"
+                                    placeholder="e.g. Software Engineer" />
+                                <span class="field-error" id="error-designation"></span>
+                            </div>
+
+                            <!-- Salary -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-salary" class="form-label">Salary (Annual) <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="emp-salary"
+                                    placeholder="e.g. 750000" min="1" />
+                                <span class="field-error" id="error-salary"></span>
+                            </div>
+
+                            <!-- Join Date -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-joinDate" class="form-label">Join Date <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" id="emp-joinDate" />
+                                <span class="field-error" id="error-joinDate"></span>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="col-12 col-md-6">
+                                <label for="emp-status" class="form-label">Status <span class="text-danger">*</span></label>
+                                <select class="form-select" id="emp-status">
+                                    <option value="">Select Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                                <span class="field-error" id="error-status"></span>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary"
+                        id="employee-form-submit-btn"
+                        form="employee-form">Add Employee</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         MODAL : View Employee (Read Only)
+    ====================================================== -->
+    <div class="modal fade" id="viewEmployeeModal" tabindex="-1"
+        aria-labelledby="viewEmployeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewEmployeeModalLabel">
+                        <i class="bi bi-person-badge me-2"></i>Employee Details
+                    </h5>
+                    <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row g-3 view-modal-body">
+
+                        <div class="col-6">
+                            <span class="view-label">Employee ID</span>
+                            <span class="view-value" id="view-emp-id"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">First Name</span>
+                            <span class="view-value" id="view-emp-firstName"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">Last Name</span>
+                            <span class="view-value" id="view-emp-lastName"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">Email</span>
+                            <span class="view-value" id="view-emp-email"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">Phone</span>
+                            <span class="view-value" id="view-emp-phone"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">Department</span>
+                            <span class="view-value" id="view-emp-department"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">Designation</span>
+                            <span class="view-value" id="view-emp-designation"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">Salary</span>
+                            <span class="view-value" id="view-emp-salary"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">Join Date</span>
+                            <span class="view-value" id="view-emp-joinDate"></span>
+                        </div>
+                        <div class="col-6">
+                            <span class="view-label">Status</span>
+                            <span class="view-value" id="view-emp-status"></span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         MODAL : Delete Confirmation
+    ====================================================== -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1"
+        aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmModalLabel">
+                        <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+                        Confirm Delete
+                    </h5>
+                    <button type="button" class="btn-close"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p class="mb-0">
+                        Are you sure you want to delete
+                        <strong id="delete-employee-name"></strong>?
+                        This action cannot be undone.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger"
+                        id="confirm-delete-btn">
+                        <i class="bi bi-trash me-1"></i>Delete
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         BOOTSTRAP TOAST NOTIFICATION
+    ====================================================== -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="app-toast" class="toast align-items-center border-0" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="app-toast-body"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         SCRIPTS — loaded in strict dependency order
+    ====================================================== -->
+
+    <!-- jQuery 3.x -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Application Scripts — strict dependency order -->
+    
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/storageService.js"></script>
+    <script src="js/authService.js"></script>
+    <script src="js/employeeService.js"></script>
+    <script src="js/validationService.js"></script>
+    <script src="js/dashboardService.js"></script>
+    <script src="js/uiService.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
