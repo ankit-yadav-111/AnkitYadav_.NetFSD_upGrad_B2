@@ -1,0 +1,98 @@
+[
+  {
+    "id": "INC001",
+    "title": "Database connection timeout on prod-db-01",
+    "description": "Production database is timing out causing complete service outage on all systems",
+    "reported_by": "monitoring@company.com",
+    "timestamp": "2025-04-28T09:15:00Z",
+    "assigned_team": "Network Ops"
+  },
+  {
+    "id": "INC002",
+    "title": "Suspicious login attempts from unknown IP",
+    "description": "Multiple brute-force login attempts detected from IP 198.51.100.45",
+    "reported_by": "john.doe@company.com",
+    "timestamp": "2025-04-28T09:30:00Z",
+    "assigned_team": "Security Team"
+  },
+  {
+    "id": "INC003",
+    "title": "Checkout service returning NullPointerException",
+    "description": "Application throwing NullPointerException error code in checkout flow, stack trace attached",
+    "reported_by": "dev@company.com",
+    "timestamp": "2025-04-28T10:00:00Z",
+    "assigned_team": "App Dev"
+  },
+  {
+    "id": "INC004",
+    "title": "Network switch offline in DC rack B",
+    "description": "Core switch on VLAN 30 is completely down causing network outage in rack B",
+    "reported_by": "noc@company.com",
+    "timestamp": "2025-04-28T10:15:00Z",
+    "assigned_team": "Network Ops"
+  },
+  {
+    "id": "INC005",
+    "title": "Ransomware signature detected on workstation",
+    "description": "Security scan found ransomware malware signature on workstation WS-0042 in production",
+    "reported_by": "soc@company.com",
+    "timestamp": "2025-04-28T10:30:00Z",
+    "assigned_team": "Security Team"
+  },
+  {
+    "id": "INC006",
+    "title": "Payment gateway timeout on Stripe API",
+    "description": "Stripe API returning HTTP-503 error code causing payment failures for all customers",
+    "reported_by": "payments@company.com",
+    "timestamp": "2025-04-28T11:00:00Z",
+    "assigned_team": "App Dev"
+  },
+  {
+    "id": "INC007",
+    "title": "Intermittent packet loss on VLAN 30",
+    "description": "Network monitoring shows intermittent packet loss on VLAN 30 subnet 10.30.0.0/24",
+    "reported_by": "noc@company.com",
+    "timestamp": "2025-04-28T11:15:00Z",
+    "assigned_team": "Network Ops"
+  },
+  {
+    "id": "INC008",
+    "title": "Phishing email reported by employees",
+    "description": "Three employees reported receiving suspicious phishing email with malicious link",
+    "reported_by": "helpdesk@company.com",
+    "timestamp": "2025-04-28T11:30:00Z",
+    "assigned_team": "Security Team"
+  },
+  {
+    "id": "INC009",
+    "title": "API response slow on reporting service",
+    "description": "Reporting API is slow, P95 latency degraded to 4.2 seconds, intermittent warnings in logs",
+    "reported_by": "dev@company.com",
+    "timestamp": "2025-04-28T12:00:00Z",
+    "assigned_team": "App Dev"
+  },
+  {
+    "id": "INC010",
+    "title": "Scheduled job failed in non-production env",
+    "description": "Nightly batch job failed in staging environment due to missing config file",
+    "reported_by": "dev@company.com",
+    "timestamp": "2025-04-28T12:15:00Z",
+    "assigned_team": "App Dev"
+  },
+  {
+    "id": "INC011",
+    "title": "Minor firewall rule misconfiguration found",
+    "description": "Audit found an unauthorized firewall rule allowing traffic on port 8080",
+    "reported_by": "security@company.com",
+    "timestamp": "2025-04-28T12:30:00Z",
+    "assigned_team": "Security Team"
+  },
+  {
+    "id": "INC012",
+    "title": "DNS resolution intermittent on 10.2.0.0 subnet",
+    "description": "DNS queries intermittently failing on subnet 10.2.0.0/16 via TCP protocol",
+    "reported_by": "noc@company.com",
+    "timestamp": "2025-04-28T13:00:00Z",
+    "assigned_team": "Network Ops"
+  }
+]

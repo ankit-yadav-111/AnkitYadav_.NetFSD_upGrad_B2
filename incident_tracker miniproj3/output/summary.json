@@ -1,0 +1,122 @@
+[
+  {
+    "id": "INC001",
+    "type": "app",
+    "severity": "critical",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC001",
+      "jira": "MOCK-JIRA-INC001",
+      "azure": "MOCK-AZURE-INC001"
+    }
+  },
+  {
+    "id": "INC002",
+    "type": "security",
+    "severity": "high",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC002",
+      "jira": "MOCK-JIRA-INC002",
+      "azure": "MOCK-AZURE-INC002"
+    }
+  },
+  {
+    "id": "INC003",
+    "type": "app",
+    "severity": "high",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC003",
+      "jira": "MOCK-JIRA-INC003",
+      "azure": "MOCK-AZURE-INC003"
+    }
+  },
+  {
+    "id": "INC004",
+    "type": "network",
+    "severity": "critical",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC004",
+      "jira": "MOCK-JIRA-INC004",
+      "azure": "MOCK-AZURE-INC004"
+    }
+  },
+  {
+    "id": "INC005",
+    "type": "security",
+    "severity": "critical",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC005",
+      "jira": "MOCK-JIRA-INC005",
+      "azure": "MOCK-AZURE-INC005"
+    }
+  },
+  {
+    "id": "INC006",
+    "type": "app",
+    "severity": "high",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC006",
+      "jira": "MOCK-JIRA-INC006",
+      "azure": "MOCK-AZURE-INC006"
+    }
+  },
+  {
+    "id": "INC007",
+    "type": "network",
+    "severity": "medium",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC007",
+      "jira": "MOCK-JIRA-INC007",
+      "azure": "MOCK-AZURE-INC007"
+    }
+  },
+  {
+    "id": "INC008",
+    "type": "security",
+    "severity": "medium",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC008",
+      "jira": "MOCK-JIRA-INC008",
+      "azure": "MOCK-AZURE-INC008"
+    }
+  },
+  {
+    "id": "INC009",
+    "type": "app",
+    "severity": "medium",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC009",
+      "jira": "MOCK-JIRA-INC009",
+      "azure": "MOCK-AZURE-INC009"
+    }
+  },
+  {
+    "id": "INC010",
+    "type": "general",
+    "severity": "critical",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC010",
+      "jira": "MOCK-JIRA-INC010",
+      "azure": "MOCK-AZURE-INC010"
+    }
+  },
+  {
+    "id": "INC011",
+    "type": "security",
+    "severity": "low",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC011",
+      "jira": "MOCK-JIRA-INC011",
+      "azure": "MOCK-AZURE-INC011"
+    }
+  },
+  {
+    "id": "INC012",
+    "type": "network",
+    "severity": "high",
+    "tickets": {
+      "snow": "MOCK-SNOW-INC012",
+      "jira": "MOCK-JIRA-INC012",
+      "azure": "MOCK-AZURE-INC012"
+    }
+  }
+]
